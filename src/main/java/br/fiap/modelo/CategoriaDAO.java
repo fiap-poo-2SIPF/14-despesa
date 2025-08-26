@@ -21,11 +21,11 @@ public class CategoriaDAO {
     }
 
     public void inserir(Categoria categoria) {
-        String sql = "insert into java_categoria values (?, ?)";
+        String sql = "insert into java_categoria values (seqc.nextval, ?)";
         try(Connection connection = Conexao.conectar()) {
             ps = connection.prepareStatement(sql);
-            ps.setLong(1, categoria.getId());
-            ps.setString(2, categoria.getCategoria());
+            //ps.setLong(1, categoria.getId());
+            ps.setString(1, categoria.getCategoria());
             ps.execute();
         }
         catch(SQLException e) {
